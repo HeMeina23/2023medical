@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加法练习</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .addition-app {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .problem {
+            font-size: 2em;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .input-field {
+            font-size: 1.5em;
+            padding: 10px;
+            width: 100px;
+            text-align: center;
+            margin: 0 10px;
+        }
+        .submit-btn {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .score {
+            font-size: 1.5em;
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+        .center-text {
+            text-align: center;
+        }
+        
+        #app { 
+            text-align: center; 
+            font-family: sans-serif; 
+        } 
+        
+        #problem { 
+            font-size: 72px; 
+        }
+        
+        #winner { 
+            font-size: 72px; 
+            color: green; 
+            text-align: center; 
+            font-weight: bold; 
+            margin-top: 50px; 
+        }
+        
+        .feedback {
+            text-align: center;
+            font-size: 1.2em;
+            margin: 10px 0;
+            min-height: 30px;
+        }
+        .correct {
+            color: #4CAF50;
+        }
+        .incorrect {
+            color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    {% verbatim %}
+    <script type="text/babel">
+        const AdditionApp = () => {
+            const [state, setState] = React.useState({ 
+                num1: 1, 
+                num2: 1, 
+                response: "", 
+                score: 0 
+            });
+
+            function updateResponse(event) { 
+                setState({ 
+                    ...state, 
+                    response: event.target.value 
+                }); 
+            }
+
+            function inputKeyPress(event) { 
+                if (event.key === "Enter") { 
+                    const answer = parseInt(state.response); 
+                    if (answer === state.num1 + state.num2) { 
+                        // User got question right 
+                        setState({ 
+                            ...state, 
+                            score: state.score + 1, 
+                            response: "", 
+                            num1: Math.ceil(Math.random() * 10), 
+                            num2: Math.ceil(Math.random() * 10) 
+                        }); 
+                    } else { 
+                        // User got question wrong 
+                        setState({ 
+                            ...state, 
+                            score: state.score - 1, 
+                            response: "" 
+                        }); 
+                    } 
+                } 
+            }
+
+
+
+            const { num1, num2, response, score } = state;
+
+            if (state.score === 10) { 
+                return ( 
+                    <div id="winner">You won!</div> 
+                ); 
+            }
+
+            return ( 
+                <div className="addition-app" id="app"> 
+                    <h1 className="center-text">加法练习</h1>
+                    <div className="problem" id="problem">
+                        {state.num1} + {state.num2} = 
+                        <input 
+                            type="number" 
+                            className="input-field"
+                            value={state.response}
+                            onChange={updateResponse}
+                            onKeyPress={inputKeyPress}
+                            autoFocus
+                        />
+                    </div>
+                    <div className="center-text">
+                        <button className="submit-btn" onClick={() => {
+                            const answer = parseInt(state.response); 
+                            if (answer === state.num1 + state.num2) { 
+                                // User got question right 
+                                setState({ 
+                                    ...state, 
+                                    score: state.score + 1, 
+                                    response: "", 
+                                    num1: Math.ceil(Math.random() * 10), 
+                                    num2: Math.ceil(Math.random() * 10) 
+                                }); 
+                            } else { 
+                                // User got question wrong 
+                                setState({ 
+                                    ...state, 
+                                    score: state.score - 1, 
+                                    response: "" 
+                                }); 
+                            } 
+                        }}>
+                            提交答案
+                        </button>
+                    </div>
+                    <div className="score">
+                        得分: {state.score}
+                    </div>
+                </div> 
+            );
+        };
+
+        ReactDOM.render(<AdditionApp />, document.getElementById('root'));
+    </script>
+    {% endverbatim %}
+</body>
+</html>

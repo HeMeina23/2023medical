@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <title>Single Page</title> 
+        {% load static %}
+        <style> 
+            #content {
+                margin-top: 20px;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                background-color: #f9f9f9;
+            }
+            button {
+                padding: 10px 20px;
+                margin: 5px;
+                border: none;
+                background-color: #007bff;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #0056b3;
+            }
+            .active {
+                background-color: #28a745;
+            }
+            h1 {
+                color: #333;
+                margin-top: 20px;
+            }
+        </style> 
+        <script src="{% static 'singlepage.js' %}"></script> 
+    </head> 
+    <body> 
+        <button data-section="1" class="active">Section 1</button> 
+        <button data-section="2">Section 2</button> 
+        <button data-section="3">Section 3</button> 
+        <div id="content">
+            <h1>Welcome to Section 1</h1>
+            <p>This is the content for section 1. Click the buttons above to navigate between sections.</p>
+        </div>
+    </body> 
+</html>

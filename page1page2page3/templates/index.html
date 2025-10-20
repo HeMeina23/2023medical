@@ -1,0 +1,48 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <title>Single Page</title> 
+        <style> 
+            div { 
+                display: none; 
+            }
+            button {
+                padding: 10px 20px;
+                margin: 5px;
+                border: none;
+                background-color: #007bff;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #0056b3;
+            }
+            .active {
+                background-color: #28a745;
+            }
+            h1 {
+                color: #333;
+                margin-top: 20px;
+            }
+        </style> 
+        <script src="singlepage.js"></script> 
+    </head> 
+    <body> 
+        <button data-page="page1" class="active">Page 1</button> 
+        <button data-page="page2">Page 2</button> 
+        <button data-page="page3">Page 3</button> 
+        <div id="page1" style="display: block;"> 
+            <h1>This is page 1</h1> 
+            <p>Welcome to Page 1! This is the first page of our single page application.</p>
+        </div> 
+        <div id="page2"> 
+            <h1>This is page 2</h1> 
+            <p>Welcome to Page 2! This is the second page of our single page application.</p>
+        </div> 
+        <div id="page3"> 
+            <h1>This is page 3</h1> 
+            <p>Welcome to Page 3! This is the third page of our single page application.</p>
+        </div> 
+    </body> 
+</html>
