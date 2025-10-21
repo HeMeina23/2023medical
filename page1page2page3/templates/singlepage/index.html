@@ -34,12 +34,13 @@
         <script src="{% static 'singlepage.js' %}"></script> 
     </head> 
     <body> 
-        <button data-section="1" class="active">Section 1</button> 
+        <h1>Hello!</h1>
+        <p>Welcome to our application. Please select a section to read:</p>
+        <button data-section="1">Section 1</button> 
         <button data-section="2">Section 2</button> 
         <button data-section="3">Section 3</button> 
         <div id="content">
-            <h1>Welcome to Section 1</h1>
-            <p>This is the content for section 1. Click the buttons above to navigate between sections.</p>
+            <!-- Content will be loaded here when buttons are clicked -->
         </div>
     </body> 
 </html>

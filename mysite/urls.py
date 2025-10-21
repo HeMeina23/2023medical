@@ -20,4 +20,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('student/', include('学号：20231201040   姓名：何美娜.urls')),
+    path('singlepage/', include('page1page2page3.urls')),
+    path('scroll/', include('滚动数字.urls')),
+    path('addition/', include('加法.urls')),
 ]

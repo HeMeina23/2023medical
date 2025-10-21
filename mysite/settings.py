@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'page1page2page3',
+    '滚动数字',
+    '加法',
 ]
 
 MIDDLEWARE = [
